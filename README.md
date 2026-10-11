@@ -8,7 +8,6 @@
 |---|---|
 | frontend/ | React · TypeScript · Vite 프런트엔드 |
 | backend/soom/ | Java 17 · Spring Boot · JdbcTemplate 백엔드 |
-| docs/ | API 매핑 시연 대본과 DB 확인 SQL |
 
 프런트엔드와 백엔드를 구분하고, 현재 구현을 기능별 커밋으로 나눠 등록했습니다. 과거 개발 시점을 복원한 이력은 아닙니다. 중간 커밋은 다른 기능의 파일을 참조할 수 있으므로 전체 실행에는 최신 main을 사용하세요.
 
