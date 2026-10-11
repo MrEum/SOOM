@@ -1,0 +1,29 @@
+-- Health timeline: WHO, NHS and CDC. Preserve existing IDs, rewards and progress.
+-- travel_order=0 archives retired milestones without deleting earned history.
+UPDATE no_smoking_travel SET travel_order=0 WHERE required_minutes IN (10080,129600);
+INSERT INTO no_smoking_travel(title,description,required_minutes,reward_points,travel_order,created_at) SELECT '혈압과 맥박의 변화','흡연으로 높아졌던 혈압과 맥박이 내려가기 시작해요.',20,20,1,CURRENT_TIMESTAMP WHERE NOT EXISTS(SELECT 1 FROM no_smoking_travel WHERE required_minutes=20);
+UPDATE no_smoking_travel SET title='혈압과 맥박의 변화',description='흡연으로 높아졌던 혈압과 맥박이 내려가기 시작해요.',travel_order=1 WHERE required_minutes=20;
+INSERT INTO no_smoking_travel(title,description,required_minutes,reward_points,travel_order,created_at) SELECT '일산화탄소 감소','약 12시간 후 혈중 일산화탄소 수치가 정상 수준으로 낮아져요.',720,0,2,CURRENT_TIMESTAMP WHERE NOT EXISTS(SELECT 1 FROM no_smoking_travel WHERE required_minutes=720);
+UPDATE no_smoking_travel SET title='일산화탄소 감소',description='약 12시간 후 혈중 일산화탄소 수치가 정상 수준으로 낮아져요.',travel_order=2 WHERE required_minutes=720;
+INSERT INTO no_smoking_travel(title,description,required_minutes,reward_points,travel_order,created_at) SELECT '니코틴 감소','니코틴을 추가로 사용하지 않으면 약 24시간 후 혈중 니코틴이 거의 사라져요.',1440,50,3,CURRENT_TIMESTAMP WHERE NOT EXISTS(SELECT 1 FROM no_smoking_travel WHERE required_minutes=1440);
+UPDATE no_smoking_travel SET title='니코틴 감소',description='니코틴을 추가로 사용하지 않으면 약 24시간 후 혈중 니코틴이 거의 사라져요.',travel_order=3 WHERE required_minutes=1440;
+INSERT INTO no_smoking_travel(title,description,required_minutes,reward_points,travel_order,created_at) SELECT '되살아나는 맛과 향','미각과 후각이 개선되면서 음식의 맛과 향을 더 잘 느낄 수 있어요.',2880,0,4,CURRENT_TIMESTAMP WHERE NOT EXISTS(SELECT 1 FROM no_smoking_travel WHERE required_minutes=2880);
+UPDATE no_smoking_travel SET title='되살아나는 맛과 향',description='미각과 후각이 개선되면서 음식의 맛과 향을 더 잘 느낄 수 있어요.',travel_order=4 WHERE required_minutes=2880;
+INSERT INTO no_smoking_travel(title,description,required_minutes,reward_points,travel_order,created_at) SELECT '한결 편안한 호흡','기관지가 이완되면서 숨쉬기가 한결 수월해질 수 있어요.',4320,100,5,CURRENT_TIMESTAMP WHERE NOT EXISTS(SELECT 1 FROM no_smoking_travel WHERE required_minutes=4320);
+UPDATE no_smoking_travel SET title='한결 편안한 호흡',description='기관지가 이완되면서 숨쉬기가 한결 수월해질 수 있어요.',travel_order=5 WHERE required_minutes=4320;
+INSERT INTO no_smoking_travel(title,description,required_minutes,reward_points,travel_order,created_at) SELECT '혈액 순환과 폐 기능 개선','2주에서 3개월에 걸쳐 혈액 순환이 좋아지고 폐 기능이 개선돼요.',20160,300,6,CURRENT_TIMESTAMP WHERE NOT EXISTS(SELECT 1 FROM no_smoking_travel WHERE required_minutes=20160);
+UPDATE no_smoking_travel SET title='혈액 순환과 폐 기능 개선',description='2주에서 3개월에 걸쳐 혈액 순환이 좋아지고 폐 기능이 개선돼요.',travel_order=6 WHERE required_minutes=20160;
+INSERT INTO no_smoking_travel(title,description,required_minutes,reward_points,travel_order,created_at) SELECT '기침과 숨참의 완화','1~9개월에 걸쳐 기침과 호흡곤란이 줄어들어요. 호흡기 회복은 점진적으로 진행돼요.',43200,500,7,CURRENT_TIMESTAMP WHERE NOT EXISTS(SELECT 1 FROM no_smoking_travel WHERE required_minutes=43200);
+UPDATE no_smoking_travel SET title='기침과 숨참의 완화',description='1~9개월에 걸쳐 기침과 호흡곤란이 줄어들어요. 호흡기 회복은 점진적으로 진행돼요.',travel_order=7 WHERE required_minutes=43200;
+INSERT INTO no_smoking_travel(title,description,required_minutes,reward_points,travel_order,created_at) SELECT '관상동맥질환 위험 감소','관상동맥질환 위험이 계속 흡연하는 사람의 약 절반 수준으로 낮아져요.',525600,3000,8,CURRENT_TIMESTAMP WHERE NOT EXISTS(SELECT 1 FROM no_smoking_travel WHERE required_minutes=525600);
+UPDATE no_smoking_travel SET title='관상동맥질환 위험 감소',description='관상동맥질환 위험이 계속 흡연하는 사람의 약 절반 수준으로 낮아져요.',travel_order=8 WHERE required_minutes=525600;
+INSERT INTO no_smoking_travel(title,description,required_minutes,reward_points,travel_order,created_at) SELECT '뇌졸중 위험의 장기적 감소','금연 후 5~15년에 걸쳐 뇌졸중 위험이 비흡연자 수준으로 낮아져요. 여러 암의 위험도 시간이 지나며 감소해요.',2628000,0,9,CURRENT_TIMESTAMP WHERE NOT EXISTS(SELECT 1 FROM no_smoking_travel WHERE required_minutes=2628000);
+UPDATE no_smoking_travel SET title='뇌졸중 위험의 장기적 감소',description='금연 후 5~15년에 걸쳐 뇌졸중 위험이 비흡연자 수준으로 낮아져요. 여러 암의 위험도 시간이 지나며 감소해요.',travel_order=9 WHERE required_minutes=2628000;
+INSERT INTO no_smoking_travel(title,description,required_minutes,reward_points,travel_order,created_at) SELECT '폐암 위험 감소','폐암 위험이 계속 흡연하는 사람의 약 절반으로 낮아지고, 구강·인후·식도·방광 등 여러 암의 위험도 감소해요.',5256000,0,10,CURRENT_TIMESTAMP WHERE NOT EXISTS(SELECT 1 FROM no_smoking_travel WHERE required_minutes=5256000);
+UPDATE no_smoking_travel SET title='폐암 위험 감소',description='폐암 위험이 계속 흡연하는 사람의 약 절반으로 낮아지고, 구강·인후·식도·방광 등 여러 암의 위험도 감소해요.',travel_order=10 WHERE required_minutes=5256000;
+INSERT INTO no_smoking_travel(title,description,required_minutes,reward_points,travel_order,created_at) SELECT '심장 건강의 장기적 회복','관상동맥질환 위험이 비흡연자와 비슷한 수준으로 낮아져요.',7884000,0,11,CURRENT_TIMESTAMP WHERE NOT EXISTS(SELECT 1 FROM no_smoking_travel WHERE required_minutes=7884000);
+UPDATE no_smoking_travel SET title='심장 건강의 장기적 회복',description='관상동맥질환 위험이 비흡연자와 비슷한 수준으로 낮아져요.',travel_order=11 WHERE required_minutes=7884000;
+INSERT INTO fighting(content,is_active,created_at) SELECT '어제보다 가벼운 숨, 오늘의 당신이 만들고 있어요.',TRUE,CURRENT_TIMESTAMP WHERE NOT EXISTS(SELECT 1 FROM fighting WHERE content='어제보다 가벼운 숨, 오늘의 당신이 만들고 있어요.');
+INSERT INTO fighting(content,is_active,created_at) SELECT '한 번의 깊은 숨이, 더 건강한 내일을 만듭니다.',TRUE,CURRENT_TIMESTAMP WHERE NOT EXISTS(SELECT 1 FROM fighting WHERE content='한 번의 깊은 숨이, 더 건강한 내일을 만듭니다.');
+INSERT INTO fighting(content,is_active,created_at) SELECT '완벽하지 않아도 괜찮아요. 오늘의 선택이 중요하니까요.',TRUE,CURRENT_TIMESTAMP WHERE NOT EXISTS(SELECT 1 FROM fighting WHERE content='완벽하지 않아도 괜찮아요. 오늘의 선택이 중요하니까요.');
+INSERT INTO fighting(content,is_active,created_at) SELECT '당신이 지켜낸 하루하루가 모여 큰 변화가 됩니다.',TRUE,CURRENT_TIMESTAMP WHERE NOT EXISTS(SELECT 1 FROM fighting WHERE content='당신이 지켜낸 하루하루가 모여 큰 변화가 됩니다.');
