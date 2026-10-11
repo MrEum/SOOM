@@ -1,0 +1,34 @@
+# Local configuration and credentials
+.env
+.env.*
+*.pem
+*.key
+**/application-local.properties
+**/application-local.yml
+
+# Dependencies and generated outputs
+**/node_modules/
+**/.gradle/
+backend/soom/build/
+backend/soom/bin/
+frontend/dist/
+frontend/.next/
+frontend/.vinext/
+frontend/.wrangler/
+frontend/.sites-runtime/
+frontend/.openai/
+frontend/outputs/
+**/*.tsbuildinfo
+*.log
+
+# Local workspace and IDE state
+**/.idea/
+**/.settings/
+**/.vscode/
+**/.classpath
+**/.project
+**/.codex/
+**/.agents/
+migration-backup*/
+.DS_Store
+Thumbs.db
